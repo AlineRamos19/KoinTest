@@ -11,6 +11,7 @@ import org.koin.standalone.inject
 class NoteRepository: KoinComponent, IRepositoryView {
 
 
+    //sem usecase, pois esse app de amostra apenas acessa o room e nenhuma API
     private var mListAllNotes : LiveData<List<Note>> = MutableLiveData<List<Note>>()
     private val mDao : NoteDao by inject()
 
