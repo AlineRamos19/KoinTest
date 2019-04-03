@@ -1,28 +1,22 @@
 package com.example.kointest.infra.cache
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.example.kointest.domain.entity.Note
-import io.reactivex.Maybe
+import io.reactivex.Completable
 
 @Dao
 interface NoteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(note : Note)
+    fun insert(note : Note) : Completable
 
     @Query("SELECT * FROM note_table")
     fun getAllNotes() : LiveData<List<Note>>
 
-    @Query("DELETE FROM note_table")
-    fun deleteAllNotes()
-
-    @Query("SELECT * FROM note_table WHERE id =  :id")
-    fun getNoteById(id : Int) : Maybe<Note>
-
     @Delete
-    fun deleteNote(note: Note)
+    fun deleteNote(note: Note) : Completable
 
     @Update
-    fun update(vararg note: Note)
+    fun update(vararg note: Note) : Completable
 }

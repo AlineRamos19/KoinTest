@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">KoinTest</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Nota</string>
     <string name="no_notes_add">Sem notas adicionadas</string>
     <string name="label_title_note">Título</string>
     <string name="label_input_here">Escreva sua nota aqui</string>
@@ -9,7 +9,7 @@
     <string name="priority_2">média</string>
     <string name="priority_3">alta</string>
     <string name="error_input_empty">favor preencher todos os campos</string>
-    <string name="sucess_note_save">Nota salva!</string>
+    <string name="sucess_note_save" tools:keep="@string/sucess_note_save">Nota salva!</string>
     <string name="label_dialog_title">Atenção</string>
     <string name="btn_dialog_cancel">Cancelar</string>
     <string name="btn_exit_dialog">Sim, sair.</string>

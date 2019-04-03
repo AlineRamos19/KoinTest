@@ -1,13 +1,14 @@
 package com.example.kointest.presentation.views.allnote
 
-import android.arch.lifecycle.Observer
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kointest.R
 import com.example.kointest.domain.entity.Note
-import android.arch.lifecycle.ViewModelProviders
 import com.example.kointest.domain.viewmodel.NoteViewModel
 import com.example.kointest.presentation.adapter.NoteAdapter
 import com.example.kointest.presentation.views.newnote.AddNewNoteActivity
@@ -44,8 +45,14 @@ class AllNotesActivity : AppCompatActivity(), AllNotesView {
     override fun configRecycler() {
         recycler_all_notes.setHasFixedSize(true)
         recycler_all_notes.layoutManager =
-            LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(
+                this,
+                RecyclerView.VERTICAL,
+                false
+            )
         recycler_all_notes.adapter = mAdapter
     }
+
+
 
 }

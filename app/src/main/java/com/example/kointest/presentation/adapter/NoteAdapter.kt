@@ -3,10 +3,11 @@ package com.example.kointest.presentation.adapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.kointest.R
 import com.example.kointest.domain.entity.Note
 import com.example.kointest.presentation.views.newnote.AddNewNoteActivity
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.row_note_item.view.*
 
 
 class NoteAdapter(private val context: Context) :
-    RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
 
     private var mListNote : List<Note> = mutableListOf()
 
@@ -66,10 +67,10 @@ class NoteAdapter(private val context: Context) :
     }
 
 
-    class NoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title = itemView.title
-        val body = itemView.body
-        val date = itemView.date
+    class NoteHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.title
+        val body : TextView = itemView.body
+        val date : TextView = itemView.date
         val priority : View = itemView.priority
 
     }

@@ -20,5 +20,6 @@ interface INewNoteContract {
         fun updateNote(note : Note)
         fun deleteNote(note: Note)
 
+
     }
 }

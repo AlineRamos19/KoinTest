@@ -1,16 +1,16 @@
 package com.example.kointest.presentation.views.newnote
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AlertDialog
 import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kointest.R
 import com.example.kointest.domain.entity.Note
 import com.example.kointest.domain.utils.Enums
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_add_new_note.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -18,8 +18,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddNewNoteActivity : AppCompatActivity(), INewNoteContract.View {
-
-
 
 
     private val presenter by inject<INewNoteContract.Presenter> { parametersOf(this)}
@@ -45,15 +43,18 @@ class AddNewNoteActivity : AppCompatActivity(), INewNoteContract.View {
     }
 
     override fun inputValuesIntent(note: Note) {
-        input_title.setText(note.titleNote)
-        input_body.setText(note.contentNote)
-        last_update.visibility = View.VISIBLE
-        last_update.append(" " + note.dateNote)
-        when(note.priorityNote){
-            Enums.Companion.Priority.LOW.getPriority() -> radio_group_priority.check(prio_1.id)
-            Enums.Companion.Priority.MEDIUM.getPriority()  -> radio_group_priority.check(prio_2.id)
-            Enums.Companion.Priority.HIGH.getPriority() -> radio_group_priority.check(prio_3.id)
+        note.let {
+            input_title.setText(it.titleNote)
+            input_body.setText(it.contentNote)
+            last_update.visibility = View.VISIBLE
+            last_update.append(" " + it.dateNote)
+            when(it.priorityNote){
+                Enums.Companion.Priority.LOW.getPriority() -> radio_group_priority.check(prio_1.id)
+                Enums.Companion.Priority.MEDIUM.getPriority()  -> radio_group_priority.check(prio_2.id)
+                Enums.Companion.Priority.HIGH.getPriority() -> radio_group_priority.check(prio_3.id)
+            }
         }
+
     }
 
 
@@ -78,7 +79,7 @@ class AddNewNoteActivity : AppCompatActivity(), INewNoteContract.View {
             }
         }
 
-        if(title.isEmpty() || body.isEmpty() || id.equals(-1)){
+        if(title.isEmpty() || body.isEmpty() || id == -1){
             showAlertEmptyInput()
         } else {
             if(::note.isInitialized){
