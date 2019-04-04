@@ -7,17 +7,24 @@ interface INewNoteContract {
     interface View{
 
         fun getValuesAndValidate()
+
         fun confirmExit()
+
         fun showAlert(msg : String)
+
         fun confirmDeleteNote()
+
         fun showAlertEmptyInput()
-        fun inputValuesIntent(note: Note)
+
+        fun inputValuesIntent()
     }
 
     interface Presenter{
 
         fun insert(note: Note)
+
         fun updateNote(note : Note)
+
         fun deleteNote(note: Note)
 
 

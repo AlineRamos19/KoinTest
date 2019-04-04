@@ -19,6 +19,6 @@ val dbModule = module {
 }
 
 val adapterModule = module {
-    factory { NoteAdapter(context = get()) }
+    factory { NoteAdapter() }
 
 }

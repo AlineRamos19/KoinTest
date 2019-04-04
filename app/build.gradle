@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
+
 apply plugin: 'kotlin-android'
+
 apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 
@@ -9,7 +12,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.kointest"
-        minSdkVersion 19
+        minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -53,10 +56,10 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.archLifecycleVersion"
 
-    // injection component
+    // Injection component
     implementation "org.koin:koin-android:$rootProject.koinVersion"
 
-    // reactive component
+    // Reactive components
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
 }

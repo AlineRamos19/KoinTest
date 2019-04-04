@@ -10,6 +10,8 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:id="@+id/constraint_new_note"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -33,11 +35,14 @@
 
         <com.google.android.material.textfield.TextInputEditText
                 android:maxLines="1"
+                android:textSize="@dimen/size_body"
                 android:inputType="text|textCapSentences"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/input_title"
+                android:fontFamily="sans-serif-light"
                 android:hint="@string/label_title_note"
+                android:textColorHint="@color/ColorBackgroundMain"
                 android:padding="@dimen/min_margin"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,8 +58,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:textSize="@dimen/size_body"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
                     android:id="@+id/input_body"
+                    android:textColorHint="@color/ColorBackgroundMain"
                     android:inputType="text|textMultiLine|textCapSentences"
                     android:hint="@string/label_input_here"
                     android:padding="@dimen/min_margin"/>
@@ -69,6 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
              android:text="@string/label_priority"
+                android:fontFamily="sans-serif-light"
+                android:textSize="@dimen/size_body"
         android:id="@+id/label_priority"/>
 
         <RadioGroup
@@ -112,8 +122,9 @@
                 android:id="@+id/last_update"
                 app:layout_constraintTop_toBottomOf="@id/radio_group_priority"
                 android:layout_marginTop="@dimen/margin_default"
+                android:fontFamily="sans-serif-light"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="12sp"
+                android:textSize="@dimen/size_date"
                 android:textStyle="italic"
                 android:text="@string/last_update_label"/>
 
@@ -125,6 +136,9 @@
             android:id="@+id/btn_confirm_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/size_title"
+            android:textColor="@drawable/selector_btn_add_note"
+            android:fontFamily="sans-serif-light"
             android:background="@drawable/selector_btn_add_note"
             android:text="@string/btn_confirm"
             android:padding="@dimen/margin_edit"

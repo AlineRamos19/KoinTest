@@ -6,7 +6,6 @@ import io.reactivex.Completable
 
 interface IRepositoryView {
 
-    fun getAll()
     fun getAllNote() : LiveData<List<Note>>
     fun insert(note: Note) : Completable
     fun deleteNote(note: Note) : Completable

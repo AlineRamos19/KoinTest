@@ -4,11 +4,11 @@
     <string name="label_title_note">Título</string>
     <string name="label_input_here">Escreva sua nota aqui</string>
     <string name="btn_confirm">Confirmar</string>
-    <string name="label_priority">Prioridade</string>
+    <string name="label_priority">Selecione a prioridade</string>
     <string name="priority_1">baixa</string>
     <string name="priority_2">média</string>
     <string name="priority_3">alta</string>
-    <string name="error_input_empty">favor preencher todos os campos</string>
+    <string name="error_input_empty">Favor preencher todos os campos</string>
     <string name="sucess_note_save" tools:keep="@string/sucess_note_save">Nota salva!</string>
     <string name="label_dialog_title">Atenção</string>
     <string name="btn_dialog_cancel">Cancelar</string>
@@ -17,4 +17,8 @@
     <string name="label_update_note">Nota atualizada.</string>
     <string name="label_delete_menu">Excluir nota</string>
     <string name="label_delete_note">Sim, excluir.</string>
+    <string name="confirm_delete_message">"Tem certeza que deseja excluir a nota %s?"</string>
+    <string name="confirm_exit_message">Deseja realmente sair?\nCaso haja alterações, não serão salvas.</string>
+    <string name="title_action_edit">Editar nota</string>
+    <string name="title_action_newnote">Nova nota</string>
 </resources>

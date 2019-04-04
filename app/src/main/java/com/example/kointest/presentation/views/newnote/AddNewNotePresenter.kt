@@ -1,6 +1,6 @@
 package com.example.kointest.presentation.views.newnote
 
-import android.util.Log
+import com.example.kointest.domain.entity.ErrorHandlings
 import com.example.kointest.domain.entity.Note
 import com.example.kointest.infra.repository.NoteRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,19 +10,17 @@ import org.koin.standalone.inject
 
 class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteContract.Presenter, KoinComponent {
 
-
     private val mRepo: NoteRepository by inject()
-    private val classNameLog = AddNewNotePresenter::class.java.simpleName
 
     override fun insert(note: Note) {
-       mRepo.insert(note).subscribeOn(Schedulers.io())
-           .observeOn(AndroidSchedulers.mainThread())
-           .subscribe({
-               view.showAlert("Nota salva.")
-           }, {
-               view.showAlert("Erro ao incluir nota.")
-               Log.e(classNameLog, it.message)
-           }).dispose()
+        mRepo.insert(note).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                view.showAlert("Nota salva.")
+            }, {
+                view.showAlert("Erro ao incluir nota.")
+                throw ErrorHandlings(it)
+            }).isDisposed
     }
 
     override fun updateNote(note: Note) {
@@ -32,8 +30,8 @@ class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteCon
                 view.showAlert("Nota atualizada.")
             }, {
                 view.showAlert("Erro ao atualizar nota.")
-                Log.e(classNameLog, it.message)
-            }).dispose()
+                throw ErrorHandlings(it)
+            }).isDisposed
 
     }
 
@@ -44,15 +42,10 @@ class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteCon
                 view.showAlert("nota excluída.")
             }, {
                 view.showAlert("Erro ao excluir nota.")
-                Log.e(classNameLog, it.message)
-            }).dispose()
+                throw ErrorHandlings(it)
+            }).isDisposed
 
     }
-
-
-
-
-
 
 }
 

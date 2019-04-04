@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kointest.R
-import com.example.kointest.domain.entity.Note
 import com.example.kointest.domain.viewmodel.NoteViewModel
 import com.example.kointest.presentation.adapter.NoteAdapter
 import com.example.kointest.presentation.views.newnote.AddNewNoteActivity
@@ -16,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_all_notes.*
 import org.koin.android.ext.android.inject
 
 class AllNotesActivity : AppCompatActivity(), AllNotesView {
-
 
     private val mAdapter : NoteAdapter by inject()
 
@@ -31,8 +29,8 @@ class AllNotesActivity : AppCompatActivity(), AllNotesView {
 
         configRecycler()
 
-        mViewModelProvider.getAllNotes().observe(this, Observer<List<Note>> {
-                mAdapter.setNote(it!!)
+        mViewModelProvider.getAllNotes().observe(this, Observer{
+                mAdapter.mListNote = it
 
         })
 
@@ -50,6 +48,15 @@ class AllNotesActivity : AppCompatActivity(), AllNotesView {
                 RecyclerView.VERTICAL,
                 false
             )
+        mAdapter.listener = {
+            val intent = Intent(this@AllNotesActivity, AddNewNoteActivity::class.java)
+            val bundle = Bundle()
+            bundle.putSerializable("ID_NOTE", it)
+            intent.putExtras(bundle)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+
         recycler_all_notes.adapter = mAdapter
     }
 
