@@ -81,10 +81,11 @@
                 android:textSize="@dimen/size_body"
         android:id="@+id/label_priority"/>
 
+
         <RadioGroup
                 android:id="@+id/radio_group_priority"
                 android:gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/margin_edit"
@@ -95,11 +96,15 @@
             <RadioButton
                     android:id="@+id/prio_1"
                     android:padding="@dimen/min_margin"
+                    android:buttonTint="@android:color/holo_green_light"
+                    android:textColor="@android:color/holo_green_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/priority_1"/>
 
             <RadioButton
+                    android:buttonTint="@android:color/holo_orange_light"
+                    android:textColor="@android:color/holo_orange_light"
                     android:id="@+id/prio_2"
                     android:padding="@dimen/min_margin"
                     android:layout_width="wrap_content"
@@ -107,6 +112,8 @@
                     android:text="@string/priority_2"/>
 
             <RadioButton
+                    android:buttonTint="@android:color/holo_red_dark"
+                    android:textColor="@android:color/holo_red_dark"
                     android:id="@+id/prio_3"
                     android:padding="@dimen/min_margin"
                     android:layout_width="wrap_content"
