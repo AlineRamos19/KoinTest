@@ -1,5 +1,6 @@
 package com.example.kointest.presentation.views.newnote
 
+import android.util.Log
 import com.example.kointest.domain.entity.ErrorHandlings
 import com.example.kointest.domain.entity.Note
 import com.example.kointest.infra.repository.NoteRepository
@@ -12,11 +13,12 @@ class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteCon
 
     private val mRepo: NoteRepository by inject()
 
+
     override fun insert(note: Note) {
         mRepo.insert(note).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view.showAlert("Nota salva.")
+                Log.i("", "Saved note ${note.titleNote}")
             }, {
                 view.showAlert("Erro ao incluir nota.")
                 throw ErrorHandlings(it)
@@ -24,10 +26,10 @@ class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteCon
     }
 
     override fun updateNote(note: Note) {
-        mRepo.insert(note).subscribeOn(Schedulers.io())
+        mRepo.update(note).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view.showAlert("Nota atualizada.")
+                Log.i("", "Update note ${note.titleNote}")
             }, {
                 view.showAlert("Erro ao atualizar nota.")
                 throw ErrorHandlings(it)
@@ -36,10 +38,10 @@ class AddNewNotePresenter(private val view: INewNoteContract.View) : INewNoteCon
     }
 
     override fun deleteNote(note: Note) {
-        mRepo.insert(note).subscribeOn(Schedulers.io())
+        mRepo.deleteNote(note).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view.showAlert("nota excluída.")
+                Log.i("", "Deleted note ${note.titleNote}")
             }, {
                 view.showAlert("Erro ao excluir nota.")
                 throw ErrorHandlings(it)
